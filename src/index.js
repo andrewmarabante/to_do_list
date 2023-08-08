@@ -1,11 +1,17 @@
 //Main Goal: Create a to-do list
-
+//should probably initialize some stuff first.
+import { loadPage } from "./dom";
+let taskArray = [0,1,2,3,4];
+let projectArray = [0,1];
+loadPage(taskArray, projectArray);
+console.log(taskArray, projectArray);
 /*
 Goal 1:
  Create a task factory that takes the values 
  'title, description, dueDate, and priority'
  and stores the objects in a global array
 */
+import { newTask } from "./dom"
 
 /*
 Goal 2: Create a project factory that takes the

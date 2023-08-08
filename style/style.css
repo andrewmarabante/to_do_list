@@ -1,0 +1,11 @@
+#projcont{
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    grid-template-rows: repeat(auto, auto);
+}
+
+.project{
+    min-height: 200px;
+    background-color: blue;
+    border: solid 1px black;
+}
