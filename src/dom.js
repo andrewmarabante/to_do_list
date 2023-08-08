@@ -6,6 +6,7 @@ Goal 1:
  'title, description, dueDate, and priority'
  and stores the objects in a global array
 */
+let currentProj;
 export function loadPage(taskArray, projectArray)
 {  projectArray[0] = newProject('House Chores');
    projectArray[1] = newProject('School Stuff');
@@ -26,6 +27,7 @@ export function loadPage(taskArray, projectArray)
    project1.appendChild(projbut1);
    project2.appendChild(projbut2);
    project1.classList.add('project');
+   document.getElementById('form').style.display = 'none';
    for(let i=0;i<5;i++)
    {  
       const taskdiv = document.createElement('div');
@@ -74,6 +76,24 @@ export function newTask(title,description,dueDate,priority)
       description: description,
       dueDate: dueDate,
       priority: priority,
+   }
+}
+
+export function checkFunc(){
+   console.log(currentProj)
+}
+
+export function toggleForm()
+{
+   const form = document.getElementById('form');
+   currentProj = this.parentElement;
+   if(form.style.display === 'none')
+   {
+      form.style.display = 'block';
+   }
+   else
+   {
+      form.style.display = 'none';
    }
 }
 
