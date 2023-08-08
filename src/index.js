@@ -12,6 +12,12 @@ Goal 1:
  and stores the objects in a global array
 */
 import { newTask } from "./dom"
+const taskbuttons = document.getElementsByClassName('taskbutton');
+for (let i=0; i<taskbuttons.length; i++)
+{
+    taskbuttons[i].addEventListener('click', newTask);
+}
+newTask(taskArray[taskArray.length]);
 
 /*
 Goal 2: Create a project factory that takes the

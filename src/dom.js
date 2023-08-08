@@ -20,7 +20,9 @@ export function loadPage(taskArray, projectArray)
    const projbut1 = document.createElement('button');
    const projbut2 = document.createElement('button');
    projbut1.innerHTML = 'New Task';
+   projbut1.classList.add('taskbutton');
    projbut2.innerHTML = 'New Task';
+   projbut2.classList.add('taskbutton');
    project1.appendChild(projbut1);
    project2.appendChild(projbut2);
    project1.classList.add('project');
@@ -63,8 +65,10 @@ export function newProject(name)
 }
 
 export function newTask(title,description,dueDate,priority)
-{
-   console.log('working')
+{  
+   const task = document.createElement('div');
+   console.log(this);
+
    return{
       title: title,
       description: description,
