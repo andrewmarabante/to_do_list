@@ -17,6 +17,12 @@ export function loadPage(taskArray, projectArray)
    const projcont = document.getElementById('projcont');
    const project1 = document.createElement('div');
    const project2 = document.createElement('div');
+   const projbut1 = document.createElement('button');
+   const projbut2 = document.createElement('button');
+   projbut1.innerHTML = 'New Task';
+   projbut2.innerHTML = 'New Task';
+   project1.appendChild(projbut1);
+   project2.appendChild(projbut2);
    project1.classList.add('project');
    for(let i=0;i<5;i++)
    {  
