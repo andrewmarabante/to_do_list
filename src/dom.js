@@ -38,6 +38,8 @@ export function loadPage()
       const dueDatediv = document.createElement('div');
       const prioritydiv = document.createElement('div');
       const rmbutt = document.createElement('button');
+      rmbutt.classList.add('removeTask');
+      rmbutt.addEventListener('click', removeTask);
       titlediv.innerHTML = taskArray[i].title;
       descriptiondiv.innerHTML = taskArray[i].description;
       dueDatediv.innerHTML = taskArray[i].dueDate;
@@ -85,6 +87,8 @@ export function newTask(e)
    const dueDate = document.createElement('div');
    const priority = document.createElement('div');
    const rmbutt = document.createElement('button');
+   rmbutt.addEventListener('click', removeTask);
+   rmbutt.classList.add('removeTask');
    rmbutt.innerHTML = 'Remove';
    title.innerHTML = taskArray[taskArray.length-1].title;
    description.innerHTML = taskArray[taskArray.length-1].description;
@@ -99,9 +103,9 @@ export function newTask(e)
    console.log(taskArray)
 }
 
-export function removeTask()
+function removeTask()
 {
-
+   this.parentElement.remove();
 }
 
 export function toggleForm()

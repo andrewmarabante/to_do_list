@@ -2,6 +2,7 @@
 //should probably initialize some stuff first.
 import { loadPage, toggleForm, newTask, taskArray, projectArray } from "./dom";
 document.getElementById('tasksubmit').addEventListener('click', newTask)
+
 loadPage();
 /*
 Goal 1:

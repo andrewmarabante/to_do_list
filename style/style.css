@@ -9,3 +9,7 @@
     background-color: blue;
     border: solid 1px black;
 }
+
+.removeTask{
+    background-color: red;
+}
