@@ -7,14 +7,16 @@ Goal 1:
  and stores the objects in a global array
 */
 let currentProj;
-export function loadPage(taskArray, projectArray)
+export let taskArray = [0,1,2,3,4];
+export let projectArray = [0,1];
+export function loadPage()
 {  projectArray[0] = newProject('House Chores');
    projectArray[1] = newProject('School Stuff');
-   taskArray[0] = newTask('Laundry', 'Do your laundry!', 'today', 3);
-   taskArray[1] = newTask('Make Bed', 'Make your bed!', 'today', 4);
-   taskArray[2] = newTask('Dishes', 'Do your dishes!', 'today', 5);
-   taskArray[3] = newTask('Homework', 'Finish your homework!', 'tomorrow', 7);
-   taskArray[4] = newTask('Quiz', 'Study for your quiz!', 'Saturday', 8);
+   taskArray[0] = {title: 'Laundry', description:'Do your laundry!', dueDate:'today', priority: 3};
+   taskArray[1] = {title:'Make Bed', description:'Make your bed!', dueDate:'today', priority:4};
+   taskArray[2] = {title:'Dishes', description:'Do your dishes!', dueDate:'today', priority:5};
+   taskArray[3] = {title:'Homework', description:'Finish your homework!', dueDate:'tomorrow',priority: 7};
+   taskArray[4] = {title:'Quiz', description:'Study for your quiz!', dueDate:'Saturday', priority:8};
    const projcont = document.getElementById('projcont');
    const project1 = document.createElement('div');
    const project2 = document.createElement('div');
@@ -46,7 +48,6 @@ export function loadPage(taskArray, projectArray)
       if (i<3)
       {
          project1.appendChild(taskdiv)
-         console.log('asd')
       }else{
          project2.appendChild(taskdiv)
       }
@@ -66,22 +67,36 @@ export function newProject(name)
    }
 }
 
-export function newTask(title,description,dueDate,priority)
+export function newTask(e)
 {  
-   const task = document.createElement('div');
-   console.log(this);
-
-   return{
-      title: title,
-      description: description,
-      dueDate: dueDate,
-      priority: priority,
+   e.preventDefault();
+   taskArray[taskArray.length] = {
+      title: document.getElementById('formtitle').value,
+      description: document.getElementById('formdescription').value,
+      dueDate: document.getElementById('formdueDate').value,
+      priority: document.getElementById('formpriority').value
    }
+   displayTask();
 }
 
-export function checkFunc(){
-   console.log(currentProj)
-}
+function displayTask()
+{
+   const newtask = document.createElement('div');
+   const title = document.createElement('div');
+   const description = document.createElement('div');
+   const dueDate = document.createElement('div');
+   const priority = document.createElement('div');
+   title.innerHTML = taskArray[taskArray.length-1].title;
+   description.innerHTML = taskArray[taskArray.length-1].description;
+   dueDate.innerHTML = taskArray[taskArray.length-1].dueDate;
+   priority.innerHTML = taskArray[taskArray.length-1].priority;
+   newtask.appendChild(title);
+   newtask.appendChild(description);
+   newtask.appendChild(dueDate);
+   newtask.appendChild(priority);
+   currentProj.appendChild(newtask);
+   console.log(taskArray)
+}  
 
 export function toggleForm()
 {
@@ -96,7 +111,6 @@ export function toggleForm()
       form.style.display = 'none';
    }
 }
-
 
 
 /*
