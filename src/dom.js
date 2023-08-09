@@ -80,9 +80,14 @@ export function newProject()
    const projcont = document.getElementById('projcont');
    const newProj = document.createElement('div');
    const rmbutt = document.createElement('button');
+   const newtask = document.createElement('button');
+   newtask.classList.add('taskbutton');
+   newtask.innerHTML = 'New Task';
+   newtask.addEventListener('click', toggleForm);
    rmbutt.addEventListener('click', removeProject);
    rmbutt.innerHTML = 'Remove Project';
    rmbutt.classList.add('removeProject');
+   newProj.appendChild(newtask);
    newProj.appendChild(rmbutt);
    newProj.classList.add('project');
    projcont.appendChild(newProj);
