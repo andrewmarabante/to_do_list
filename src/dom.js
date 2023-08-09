@@ -37,14 +37,17 @@ export function loadPage()
       const descriptiondiv = document.createElement('div');
       const dueDatediv = document.createElement('div');
       const prioritydiv = document.createElement('div');
+      const rmbutt = document.createElement('button');
       titlediv.innerHTML = taskArray[i].title;
       descriptiondiv.innerHTML = taskArray[i].description;
       dueDatediv.innerHTML = taskArray[i].dueDate;
       prioritydiv.innerHTML = taskArray[i].priority;
+      rmbutt.innerHTML = 'Remove'
       taskdiv.appendChild(titlediv);
       taskdiv.appendChild(descriptiondiv);
       taskdiv.appendChild(dueDatediv);
       taskdiv.appendChild(prioritydiv);
+      taskdiv.appendChild(rmbutt);  
       if (i<3)
       {
          project1.appendChild(taskdiv)
@@ -76,27 +79,30 @@ export function newTask(e)
       dueDate: document.getElementById('formdueDate').value,
       priority: document.getElementById('formpriority').value
    }
-   displayTask();
-}
-
-function displayTask()
-{
    const newtask = document.createElement('div');
    const title = document.createElement('div');
    const description = document.createElement('div');
    const dueDate = document.createElement('div');
    const priority = document.createElement('div');
+   const rmbutt = document.createElement('button');
+   rmbutt.innerHTML = 'Remove';
    title.innerHTML = taskArray[taskArray.length-1].title;
    description.innerHTML = taskArray[taskArray.length-1].description;
    dueDate.innerHTML = taskArray[taskArray.length-1].dueDate;
    priority.innerHTML = taskArray[taskArray.length-1].priority;
+   newtask.appendChild(rmbutt);
    newtask.appendChild(title);
    newtask.appendChild(description);
    newtask.appendChild(dueDate);
    newtask.appendChild(priority);
    currentProj.appendChild(newtask);
    console.log(taskArray)
-}  
+}
+
+export function removeTask()
+{
+
+}
 
 export function toggleForm()
 {
