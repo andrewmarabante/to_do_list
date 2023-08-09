@@ -24,6 +24,16 @@ export function loadPage()
    const projbut2 = document.createElement('button');
    const rmbutt1 = document.createElement('button');
    const name1 = document.createElement('div');
+   const viewbutton1 = document.createElement('button');
+   viewbutton1.classList.add('view');
+   viewbutton1.innerHTML = 'View Project';
+   viewbutton1.addEventListener('click', viewProject)
+   project1.appendChild(viewbutton1);
+   const viewbutton2 = document.createElement('button');
+   viewbutton2.classList.add('view');
+   viewbutton2.innerHTML = 'View Project';
+   viewbutton2.addEventListener('click', viewProject)
+   project2.appendChild(viewbutton2);
    name1.classList.add('projectname');
    const name2 = document.createElement('div');
    name2.classList.add('projectname');
@@ -79,9 +89,7 @@ export function loadPage()
    project2.classList.add('project');
    projcont.appendChild(project1);
    projcont.appendChild(project2);
-   return{
-      taskArray, projectArray
-   }
+   goHome();
 }
 
 export function newProject(e)
@@ -91,6 +99,11 @@ export function newProject(e)
    const projcont = document.getElementById('projcont');
    const newProj = document.createElement('div');
    const name = document.createElement('div');
+   const viewbutton = document.createElement('button');
+   viewbutton.classList.add('view');
+   viewbutton.innerHTML = 'View Project'
+   viewbutton.addEventListener('click', viewProject)
+   newProj.appendChild(viewbutton);
    name.classList.add('projectname')
    name.innerHTML = projectArray[projectArray.length-1].name;
    const rmbutt = document.createElement('button');
@@ -107,11 +120,14 @@ export function newProject(e)
    newProj.classList.add('project');
    projcont.appendChild(newProj);
    console.log(projectArray);
+   goHome();
 }
 
 export function removeProject()
 {
    this.parentElement.remove()
+   projectArray.pop();
+   goHome();
 }
 
 export function newTask(e)
@@ -181,18 +197,56 @@ export function toggleProjForm()
 export function goHome()
 {
    const projects = document.getElementsByClassName('project');
+   const projcont = document.getElementById('projcont');
+   projcont.style.display = 'grid';
+   projcont.style.gridTemplateColumns = '3, auto';
+   projcont.style.gridTemplateRows = 'auto auto';
+   projcont.style.justifyContent = '';
+   projcont.style.alignItems = '';
+   console.log(projcont.querySelectorAll('*').length)
+   for (let i=0;i<projectArray.length;i++)
+   {    
+      projects[i].style.display = 'block';
+      projects[i].querySelector('.view').style.display = 'block';
+      projects[i].style.minHeight = '10em';
+      projects[i].style.maxHeight = '10em';
+      projects[i].style.width = 'auto';
+      
+   }
    for (let i=0;i<projectArray.length;i++)
    {  
-      for(let j=0;j<projects[i].querySelectorAll('*').length-1;j++)
+      for(let j=0;j<projects[i].querySelectorAll('*').length-2;j++)
       {   
-      projects[i].querySelectorAll(":not(.projectname)")[j].style.display = 'none';
+      projects[i].querySelectorAll("*:not(.view):not(.projectname)")[j].style.display = 'none';
       }
-      const viewbutton = document.createElement('button');
-      viewbutton.innerHTML = 'View Project'
-      projects[i].appendChild(viewbutton);
    }
 }
 
+function viewProject(e){
+   e.preventDefault();
+   const projcont = document.getElementById('projcont');
+   for (let i=0;i<=projcont.childElementCount-1;i++)
+   projcont.childNodes[i].style.display = 'none';
+   projcont.style.display = 'flex';
+   projcont.style.justifyContent = 'center';
+   projcont.style.alignItems = 'center';
+   projcont.style.minHeight = '30em'
+   projcont.style.minWidth = '30em'
+   this.parentElement.style.display = 'flex';
+   this.parentElement.style.gap = '2em';
+   this.parentElement.style.flexDirection = 'column';
+   this.parentElement.style.justifyContent = '';
+   this.parentElement.style.alignItems = 'center';
+   this.parentElement.style.minHeight = '25em';
+   this.parentElement.style.width = '20em';
+   console.log(this.parentElement.childElementCount)
+   for(let i=0; i<this.parentElement.querySelectorAll('*').length; i++)
+   {
+      this.parentElement.querySelectorAll('*')[i].style.display = 'block';
+   }
+   this.style.display = 'none';
+
+}
 /*
 Goal 2: Create a project factory that takes the
 project name and stores the objects in a global

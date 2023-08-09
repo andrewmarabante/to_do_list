@@ -1,8 +1,9 @@
 #projcont{
+    width: 30em;
     display: grid;
     gap: 2em;
-    grid-template-columns: repeat(3,10em);
-    grid-template-rows: repeat(auto, auto);
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(auto, 1fr);
     background-color: aqua;
 }
 
@@ -35,6 +36,9 @@ display: flex;
 
 .top{
     min-height: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .left,
