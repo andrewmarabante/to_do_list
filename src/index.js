@@ -1,8 +1,10 @@
 //Main Goal: Create a to-do list
 //should probably initialize some stuff first.
-import { loadPage, toggleForm, newTask, taskArray, projectArray, newProject } from "./dom";
+import { loadPage, toggleTaskForm, newTask, taskArray, projectArray, newProject, toggleProjForm, goHome } from "./dom";
 document.getElementById('tasksubmit').addEventListener('click', newTask)
-document.getElementById('newProject').addEventListener('click', newProject)
+document.getElementById('newProject').addEventListener('click', toggleProjForm)
+document.getElementById('projsubmit').addEventListener('click', newProject);
+document.getElementById('home').addEventListener('click', goHome)
 loadPage();
 /*
 Goal 1:
@@ -13,7 +15,7 @@ Goal 1:
 const taskbuttons = document.getElementsByClassName('taskbutton');
 for (let i=0; i<taskbuttons.length; i++)
 {
-    taskbuttons[i].addEventListener('click', toggleForm);
+    taskbuttons[i].addEventListener('click', toggleTaskForm);
 };
 
 

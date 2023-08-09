@@ -1,13 +1,17 @@
 #projcont{
     display: grid;
-    grid-template-columns: repeat(3,auto);
+    gap: 2em;
+    grid-template-columns: repeat(3,10em);
     grid-template-rows: repeat(auto, auto);
+    background-color: aqua;
 }
 
 .project{
-    min-height: 200px;
+    min-height: 10em;
+    max-height: 10em;
     background-color: blue;
     border: solid 1px black;
+    overflow: auto;
 }
 
 .removeTask{
@@ -16,4 +20,25 @@
 
 .removeProject{
     background-color: yellow;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.bot{
+flex: 5;
+display: flex;
+}
+
+.top{
+    min-height: 5em;
+}
+
+.left,
+.right{
+    flex: 1;
+    background-color: beige;
 }

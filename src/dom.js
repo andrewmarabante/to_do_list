@@ -23,6 +23,12 @@ export function loadPage()
    const projbut1 = document.createElement('button');
    const projbut2 = document.createElement('button');
    const rmbutt1 = document.createElement('button');
+   const name1 = document.createElement('div');
+   name1.classList.add('projectname');
+   const name2 = document.createElement('div');
+   name2.classList.add('projectname');
+   name1.innerHTML = 'House Chores';
+   name2.innerHTML = 'School Stuff';
    rmbutt1.addEventListener('click', removeProject);
    rmbutt1.innerHTML = 'Remove Project';
    rmbutt1.classList.add('removeProject');
@@ -36,10 +42,13 @@ export function loadPage()
    projbut2.classList.add('taskbutton');
    project1.appendChild(projbut1);
    project1.appendChild(rmbutt1);
+   project1.appendChild(name1);
    project2.appendChild(projbut2);
    project2.appendChild(rmbutt2);
+   project2.appendChild(name2);
    project1.classList.add('project');
    document.getElementById('form').style.display = 'none';
+   document.getElementById('projform').style.display = 'none';
    for(let i=0;i<5;i++)
    {  
       const taskdiv = document.createElement('div');
@@ -75,22 +84,29 @@ export function loadPage()
    }
 }
 
-export function newProject()
+export function newProject(e)
 {
+   e.preventDefault();
+   projectArray[projectArray.length] = {name: this.parentElement.newprojname.value };
    const projcont = document.getElementById('projcont');
    const newProj = document.createElement('div');
+   const name = document.createElement('div');
+   name.classList.add('projectname')
+   name.innerHTML = projectArray[projectArray.length-1].name;
    const rmbutt = document.createElement('button');
    const newtask = document.createElement('button');
    newtask.classList.add('taskbutton');
    newtask.innerHTML = 'New Task';
-   newtask.addEventListener('click', toggleForm);
+   newtask.addEventListener('click', toggleTaskForm);
    rmbutt.addEventListener('click', removeProject);
    rmbutt.innerHTML = 'Remove Project';
    rmbutt.classList.add('removeProject');
+   newProj.appendChild(name);
    newProj.appendChild(newtask);
    newProj.appendChild(rmbutt);
    newProj.classList.add('project');
    projcont.appendChild(newProj);
+   console.log(projectArray);
 }
 
 export function removeProject()
@@ -134,7 +150,7 @@ function removeTask()
    this.parentElement.remove();
 }
 
-export function toggleForm()
+export function toggleTaskForm()
 {
    const form = document.getElementById('form');
    currentProj = this.parentElement;
@@ -148,6 +164,34 @@ export function toggleForm()
    }
 }
 
+export function toggleProjForm()
+{
+   console.log('working')
+   const projForm = document.getElementById('projform');
+   if (projForm.style.display === 'none')
+   {
+      projForm.style.display = 'block';
+   }
+   else
+   {
+      projForm.style.display = 'none';
+   }
+}
+
+export function goHome()
+{
+   const projects = document.getElementsByClassName('project');
+   for (let i=0;i<projectArray.length;i++)
+   {  
+      for(let j=0;j<projects[i].querySelectorAll('*').length-1;j++)
+      {   
+      projects[i].querySelectorAll(":not(.projectname)")[j].style.display = 'none';
+      }
+      const viewbutton = document.createElement('button');
+      viewbutton.innerHTML = 'View Project'
+      projects[i].appendChild(viewbutton);
+   }
+}
 
 /*
 Goal 2: Create a project factory that takes the
