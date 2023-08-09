@@ -13,3 +13,7 @@
 .removeTask{
     background-color: red;
 }
+
+.removeProject{
+    background-color: yellow;
+}

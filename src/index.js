@@ -1,8 +1,8 @@
 //Main Goal: Create a to-do list
 //should probably initialize some stuff first.
-import { loadPage, toggleForm, newTask, taskArray, projectArray } from "./dom";
+import { loadPage, toggleForm, newTask, taskArray, projectArray, newProject } from "./dom";
 document.getElementById('tasksubmit').addEventListener('click', newTask)
-
+document.getElementById('newProject').addEventListener('click', newProject)
 loadPage();
 /*
 Goal 1:

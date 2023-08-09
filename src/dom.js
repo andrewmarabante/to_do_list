@@ -10,8 +10,8 @@ let currentProj;
 export let taskArray = [0,1,2,3,4];
 export let projectArray = [0,1];
 export function loadPage()
-{  projectArray[0] = newProject('House Chores');
-   projectArray[1] = newProject('School Stuff');
+{  projectArray[0] = {name: 'House Chores'};
+   projectArray[1] = {name: 'School Stuff'};
    taskArray[0] = {title: 'Laundry', description:'Do your laundry!', dueDate:'today', priority: 3};
    taskArray[1] = {title:'Make Bed', description:'Make your bed!', dueDate:'today', priority:4};
    taskArray[2] = {title:'Dishes', description:'Do your dishes!', dueDate:'today', priority:5};
@@ -22,12 +22,22 @@ export function loadPage()
    const project2 = document.createElement('div');
    const projbut1 = document.createElement('button');
    const projbut2 = document.createElement('button');
+   const rmbutt1 = document.createElement('button');
+   rmbutt1.addEventListener('click', removeProject);
+   rmbutt1.innerHTML = 'Remove Project';
+   rmbutt1.classList.add('removeProject');
+   const rmbutt2 = document.createElement('button');
+   rmbutt2.addEventListener('click', removeProject);
+   rmbutt2.innerHTML = 'Remove Project';
+   rmbutt2.classList.add('removeProject');
    projbut1.innerHTML = 'New Task';
    projbut1.classList.add('taskbutton');
    projbut2.innerHTML = 'New Task';
    projbut2.classList.add('taskbutton');
    project1.appendChild(projbut1);
+   project1.appendChild(rmbutt1);
    project2.appendChild(projbut2);
+   project2.appendChild(rmbutt2);
    project1.classList.add('project');
    document.getElementById('form').style.display = 'none';
    for(let i=0;i<5;i++)
@@ -65,11 +75,22 @@ export function loadPage()
    }
 }
 
-export function newProject(name)
+export function newProject()
 {
-   return{
-   name: name
-   }
+   const projcont = document.getElementById('projcont');
+   const newProj = document.createElement('div');
+   const rmbutt = document.createElement('button');
+   rmbutt.addEventListener('click', removeProject);
+   rmbutt.innerHTML = 'Remove Project';
+   rmbutt.classList.add('removeProject');
+   newProj.appendChild(rmbutt);
+   newProj.classList.add('project');
+   projcont.appendChild(newProj);
+}
+
+export function removeProject()
+{
+   this.parentElement.remove()
 }
 
 export function newTask(e)
