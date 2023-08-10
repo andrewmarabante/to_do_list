@@ -5,18 +5,22 @@
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(auto, 1fr);
     background-color: aqua;
+    padding: 2em;
 }
 
 .project{
-    min-height: 10em;
-    max-height: 10em;
-    background-color: blue;
+    background-color: rgb(167, 147, 35);
     border: solid 1px black;
     overflow: auto;
+    border-radius: 1.5em;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1em;
 }
 
 .removeTask{
     background-color: red;
+    margin-bottom: 1em;
 }
 
 .removeProject{
@@ -45,4 +49,23 @@ display: flex;
 .right{
     flex: 1;
     background-color: beige;
+}
+
+.view{
+    border-radius: 1em;
+    padding: .5em;
+}
+
+.projectname{
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+div{
+    text-align: center;
+}
+
+button{
+    text-align: center;
 }

@@ -25,15 +25,17 @@ export function loadPage()
    const rmbutt1 = document.createElement('button');
    const name1 = document.createElement('div');
    const viewbutton1 = document.createElement('button');
+   const buttonholder1 = document.createElement('div');
+   buttonholder1.classList.add('buttonholder');
+   const buttonholder2 = document.createElement('div');
+   buttonholder2.classList.add('buttonholder');
    viewbutton1.classList.add('view');
    viewbutton1.innerHTML = 'View Project';
    viewbutton1.addEventListener('click', viewProject)
-   project1.appendChild(viewbutton1);
    const viewbutton2 = document.createElement('button');
    viewbutton2.classList.add('view');
    viewbutton2.innerHTML = 'View Project';
    viewbutton2.addEventListener('click', viewProject)
-   project2.appendChild(viewbutton2);
    name1.classList.add('projectname');
    const name2 = document.createElement('div');
    name2.classList.add('projectname');
@@ -50,12 +52,16 @@ export function loadPage()
    projbut1.classList.add('taskbutton');
    projbut2.innerHTML = 'New Task';
    projbut2.classList.add('taskbutton');
-   project1.appendChild(projbut1);
-   project1.appendChild(rmbutt1);
    project1.appendChild(name1);
-   project2.appendChild(projbut2);
-   project2.appendChild(rmbutt2);
+   buttonholder1.appendChild(projbut1);
+   buttonholder1.appendChild(rmbutt1);
+   project1.appendChild(buttonholder1);
+   project1.appendChild(viewbutton1);
    project2.appendChild(name2);
+   buttonholder2.appendChild(rmbutt2);
+   buttonholder2.appendChild(projbut2);
+   project2.appendChild(buttonholder2);
+   project2.appendChild(viewbutton2);
    project1.classList.add('project');
    document.getElementById('form').style.display = 'none';
    document.getElementById('projform').style.display = 'none';
@@ -100,10 +106,11 @@ export function newProject(e)
    const newProj = document.createElement('div');
    const name = document.createElement('div');
    const viewbutton = document.createElement('button');
+   const buttonholder = document.createElement('div');
+   buttonholder.classList.add('buttonholder');
    viewbutton.classList.add('view');
    viewbutton.innerHTML = 'View Project'
    viewbutton.addEventListener('click', viewProject)
-   newProj.appendChild(viewbutton);
    name.classList.add('projectname')
    name.innerHTML = projectArray[projectArray.length-1].name;
    const rmbutt = document.createElement('button');
@@ -115,8 +122,10 @@ export function newProject(e)
    rmbutt.innerHTML = 'Remove Project';
    rmbutt.classList.add('removeProject');
    newProj.appendChild(name);
-   newProj.appendChild(newtask);
-   newProj.appendChild(rmbutt);
+   newProj.appendChild(viewbutton);
+   buttonholder.appendChild(newtask);
+   buttonholder.appendChild(rmbutt);
+   newProj.appendChild(buttonholder);
    newProj.classList.add('project');
    projcont.appendChild(newProj);
    console.log(projectArray);
@@ -125,7 +134,7 @@ export function newProject(e)
 
 export function removeProject()
 {
-   this.parentElement.remove()
+   this.parentElement.parentElement.remove();
    projectArray.pop();
    goHome();
 }
@@ -140,6 +149,7 @@ export function newTask(e)
       priority: document.getElementById('formpriority').value
    }
    const newtask = document.createElement('div');
+   newtask.classList.add('newtask')
    const title = document.createElement('div');
    const description = document.createElement('div');
    const dueDate = document.createElement('div');
@@ -152,12 +162,12 @@ export function newTask(e)
    description.innerHTML = taskArray[taskArray.length-1].description;
    dueDate.innerHTML = taskArray[taskArray.length-1].dueDate;
    priority.innerHTML = taskArray[taskArray.length-1].priority;
-   newtask.appendChild(rmbutt);
    newtask.appendChild(title);
    newtask.appendChild(description);
    newtask.appendChild(dueDate);
    newtask.appendChild(priority);
-   currentProj.appendChild(newtask);
+   newtask.appendChild(rmbutt);
+   currentProj.parentElement.appendChild(newtask);
    console.log(taskArray)
 }
 
@@ -206,12 +216,13 @@ export function goHome()
    console.log(projcont.querySelectorAll('*').length)
    for (let i=0;i<projectArray.length;i++)
    {    
-      projects[i].style.display = 'block';
+      projects[i].style.display = 'flex';
       projects[i].querySelector('.view').style.display = 'block';
       projects[i].style.minHeight = '10em';
       projects[i].style.maxHeight = '10em';
       projects[i].style.width = 'auto';
-      
+      projects[i].style.justifyContent = 'center';
+      projects[i].style.alignItems = 'center';
    }
    for (let i=0;i<projectArray.length;i++)
    {  
@@ -232,11 +243,7 @@ function viewProject(e){
    projcont.style.alignItems = 'center';
    projcont.style.minHeight = '30em'
    projcont.style.minWidth = '30em'
-   this.parentElement.style.display = 'flex';
-   this.parentElement.style.gap = '2em';
-   this.parentElement.style.flexDirection = 'column';
-   this.parentElement.style.justifyContent = '';
-   this.parentElement.style.alignItems = 'center';
+   this.parentElement.style.display = 'block';
    this.parentElement.style.minHeight = '25em';
    this.parentElement.style.width = '20em';
    console.log(this.parentElement.childElementCount)
@@ -244,6 +251,13 @@ function viewProject(e){
    {
       this.parentElement.querySelectorAll('*')[i].style.display = 'block';
    }
+   this.parentElement.querySelector('.buttonholder').style.display = 'flex';
+   this.parentElement.querySelector('.buttonholder').style.padding = '1em';
+   this.parentElement.querySelector('.buttonholder').style.justifyContent = 'space-around';
+   this.parentElement.querySelector('.buttonholder').style.alignitems = 'center';
+   this.parentElement.querySelector('.removeProject').style.display = 'block';
+   this.parentElement.querySelector('.taskbutton').style.display = 'block';
+   console.log(this.parentElement);
    this.style.display = 'none';
 
 }
