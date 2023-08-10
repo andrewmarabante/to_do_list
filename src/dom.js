@@ -129,6 +129,8 @@ export function newProject(e)
    newProj.classList.add('project');
    projcont.appendChild(newProj);
    console.log(projectArray);
+   document.getElementById('projform').style.display = 'none';
+   document.getElementById('newprojname').value = '';
    goHome();
 }
 
@@ -189,12 +191,10 @@ export function toggleTaskForm()
    if(form.style.display === 'none')
    {
       form.style.display = 'block';
-      document.getElementById('newProject').style.display = 'none';
    }
    else
    {
       form.style.display = 'none';
-      document.getElementById('newProject').style.display = 'block';
    }
 }
 

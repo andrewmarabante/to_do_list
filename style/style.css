@@ -80,3 +80,24 @@ input[type=text], input[type=number], type[submit] {
 .newtask{
     border: dotted 1px black;
 }
+
+#newProject{
+    position: absolute;
+    right: 10em;
+    padding: 1em;
+    background-color: aliceblue;
+    border-radius: 1em;
+    border: none;
+}
+
+#home{
+    position: absolute;
+    left: 10em;
+    padding: 1em;
+    background-color: aliceblue;
+    border-radius: 1em;
+    border: none;
+}
+
+#projform{
+}
