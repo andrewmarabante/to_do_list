@@ -1,15 +1,17 @@
 #projcont{
-    width: 30em;
+    width: 40em;
     display: grid;
     gap: 2em;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(auto, 1fr);
-    background-color: aqua;
+    background-image: url(../images/school.webp);
+    background-size: cover;
     padding: 2em;
 }
 
 .project{
-    background-color: rgb(167, 147, 35);
+    background-image: url(../images/paper.jpg);
+    background-size: cover;
     border: solid 1px black;
     overflow: auto;
     border-radius: 1.5em;
@@ -83,7 +85,7 @@ input[type=text], input[type=number], type[submit] {
 
 #newProject{
     position: absolute;
-    right: 10em;
+    right: 5em;
     padding: 1em;
     background-color: aliceblue;
     border-radius: 1em;
@@ -92,7 +94,7 @@ input[type=text], input[type=number], type[submit] {
 
 #home{
     position: absolute;
-    left: 10em;
+    left: 5em;
     padding: 1em;
     background-color: aliceblue;
     border-radius: 1em;
