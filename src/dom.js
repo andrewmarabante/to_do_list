@@ -134,6 +134,7 @@ export function newProject(e)
 
 export function removeProject()
 {
+   document.getElementById('top').appendChild(document.getElementById('form'));
    this.parentElement.parentElement.remove();
    projectArray.pop();
    goHome();
@@ -167,8 +168,12 @@ export function newTask(e)
    newtask.appendChild(dueDate);
    newtask.appendChild(priority);
    newtask.appendChild(rmbutt);
-   currentProj.parentElement.appendChild(newtask);
-   console.log(taskArray)
+   currentProj.appendChild(newtask);
+   document.getElementById('form').style.display = 'none';
+   document.getElementById('formtitle').value = '';
+   document.getElementById('formdescription').value = '';
+   document.getElementById('formdueDate').value= '';
+   document.getElementById('formpriority').value= '';
 }
 
 function removeTask()
@@ -176,17 +181,20 @@ function removeTask()
    this.parentElement.remove();
 }
 
-export function toggleTaskForm()
+export function toggleTaskForm()  
 {
    const form = document.getElementById('form');
-   currentProj = this.parentElement;
+   currentProj = this.parentElement.parentElement;
+   currentProj.appendChild(document.getElementById('form'));
    if(form.style.display === 'none')
    {
       form.style.display = 'block';
+      document.getElementById('newProject').style.display = 'none';
    }
    else
    {
       form.style.display = 'none';
+      document.getElementById('newProject').style.display = 'block';
    }
 }
 
@@ -206,6 +214,13 @@ export function toggleProjForm()
 
 export function goHome()
 {
+   document.getElementById('top').appendChild(document.getElementById('form'));
+   document.getElementById('newProject').style.display = 'block';
+   document.getElementById('form').style.display = 'none';
+   document.getElementById('formtitle').value = '';
+   document.getElementById('formdescription').value = '';
+   document.getElementById('formdueDate').value= '';
+   document.getElementById('formpriority').value= '';
    const projects = document.getElementsByClassName('project');
    const projcont = document.getElementById('projcont');
    projcont.style.display = 'grid';
@@ -259,7 +274,7 @@ function viewProject(e){
    this.parentElement.querySelector('.taskbutton').style.display = 'block';
    console.log(this.parentElement);
    this.style.display = 'none';
-
+   document.getElementById('form').style.display = 'none';
 }
 /*
 Goal 2: Create a project factory that takes the
