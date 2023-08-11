@@ -236,8 +236,7 @@ export function goHome()
       projects[i].style.minHeight = '10em';
       projects[i].style.maxHeight = '10em';
       projects[i].style.width = 'auto';
-      projects[i].style.justifyContent = 'center';
-      projects[i].style.alignItems = 'center';
+      projects[i].style.paddingTop = '2em';
    }
    for (let i=0;i<projectArray.length;i++)
    {  
@@ -258,6 +257,7 @@ function viewProject(e){
    projcont.style.alignItems = 'center';
    projcont.style.minHeight = '30em'
    projcont.style.minWidth = '30em'
+   projcont.style.paddingBottom = '7em'
    this.parentElement.style.display = 'block';
    this.parentElement.style.minHeight = '25em';
    this.parentElement.style.width = '20em';
