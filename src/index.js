@@ -1,10 +1,19 @@
 //Main Goal: Create a to-do list
 //should probably initialize some stuff first.
-import { loadPage, toggleTaskForm, newTask, taskArray, projectArray, newProject, toggleProjForm, goHome } from "./dom";
-document.getElementById('tasksubmit').addEventListener('click', newTask)
-document.getElementById('newProject').addEventListener('click', toggleProjForm)
-document.getElementById('projsubmit').addEventListener('click', newProject);
-document.getElementById('home').addEventListener('click', goHome)
+import {
+  loadPage,
+  toggleTaskForm,
+  newTask,
+  taskArray,
+  projectArray,
+  newProject,
+  toggleProjForm,
+  goHome,
+} from "./dom";
+document.getElementById("tasksubmit").addEventListener("click", newTask);
+document.getElementById("newProject").addEventListener("click", toggleProjForm);
+document.getElementById("projsubmit").addEventListener("click", newProject);
+document.getElementById("home").addEventListener("click", goHome);
 loadPage();
 /*
 Goal 1:
@@ -12,12 +21,10 @@ Goal 1:
  'title, description, dueDate, and priority'
  and stores the objects in a global array
 */
-const taskbuttons = document.getElementsByClassName('taskbutton');
-for (let i=0; i<taskbuttons.length; i++)
-{
-    taskbuttons[i].addEventListener('click', toggleTaskForm);
-};
-
+const taskbuttons = document.getElementsByClassName("taskbutton");
+for (let i = 0; i < taskbuttons.length; i++) {
+  taskbuttons[i].addEventListener("click", toggleTaskForm);
+}
 
 /*
 Goal 2: Create a project factory that takes the
